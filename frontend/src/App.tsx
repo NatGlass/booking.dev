@@ -1,7 +1,22 @@
-import { Button } from "./components/ui/button";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import RootLayout from "./layouts/RootLayout";
+import Home from "./pages/Home";
 
 function App() {
-  return <Button>App</Button>;
+  return (
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <RootLayout>
+              <Home />
+            </RootLayout>
+          }
+        />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
