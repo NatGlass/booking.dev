@@ -1,5 +1,11 @@
+import Hero from "@/components/hero";
+
 function Home() {
-  return <div>Home</div>;
+  return (
+    <main className="flex-1">
+      <Hero />
+    </main>
+  );
 }
 
 export default Home;
