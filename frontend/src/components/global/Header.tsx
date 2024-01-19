@@ -9,7 +9,7 @@ function Header() {
           <Link to="/">Booking.dev</Link>
         </span>
         <div className="flex space-x-2">
-          <Link to="/sign-up">
+          <Link to="/register">
             <Button data-testid="sign-up-header-button">Sign Up</Button>
           </Link>
           <Link to="/sign-in">
