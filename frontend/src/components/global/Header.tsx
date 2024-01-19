@@ -12,11 +12,11 @@ function Header() {
         </span>
         <div className="flex space-x-2">
           {isLoggedIn ? (
-            <>
+            <div className="flex items-center gap-4">
               <Link to="/my-bookings">My Bookings</Link>
               <Link to="/my-hotels">My Hotels</Link>
               <Button>Sign Out</Button>
-            </>
+            </div>
           ) : (
             <>
               <Link to="/register">
