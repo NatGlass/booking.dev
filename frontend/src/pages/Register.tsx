@@ -12,11 +12,12 @@ import { useToast } from "@/components/ui/use-toast";
 import { registerForm, registerFormType } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
 import * as apiClient from "../api-client";
 
 function Register() {
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { toast } = useToast();
   const form = useForm<registerFormType>({
@@ -31,7 +32,8 @@ function Register() {
   });
 
   const mutation = useMutation(apiClient.register, {
-    onSuccess: () => {
+    onSuccess: async () => {
+      await queryClient.invalidateQueries("validateToken");
       toast({ title: "Success", description: "Registered successfully" });
       navigate("/");
     },

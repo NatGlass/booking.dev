@@ -1,5 +1,6 @@
 import { useAppContext } from "@/contexts/AppContext";
 import { Link } from "react-router-dom";
+import SignOutButton from "../sign-out-button";
 import { Button } from "../ui/button";
 
 function Header() {
@@ -15,7 +16,7 @@ function Header() {
             <div className="flex items-center gap-4">
               <Link to="/my-bookings">My Bookings</Link>
               <Link to="/my-hotels">My Hotels</Link>
-              <Button>Sign Out</Button>
+              <SignOutButton />
             </div>
           ) : (
             <>
