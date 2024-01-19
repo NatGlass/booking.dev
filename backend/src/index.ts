@@ -13,7 +13,12 @@ mongoose.connect(process.env.DATABASE_URL as string);
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+  })
+);
 
 app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
