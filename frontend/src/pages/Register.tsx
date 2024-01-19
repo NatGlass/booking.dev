@@ -13,9 +13,11 @@ import { registerForm, registerFormType } from "@/schemas/registerForm";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
+import { useNavigate } from "react-router-dom";
 import * as apiClient from "../api-client";
 
 function Register() {
+  const navigate = useNavigate();
   const { toast } = useToast();
   const form = useForm<registerFormType>({
     resolver: zodResolver(registerForm),
@@ -31,6 +33,7 @@ function Register() {
   const mutation = useMutation(apiClient.register, {
     onSuccess: () => {
       toast({ title: "Success", description: "Registered successfully" });
+      navigate("/");
     },
     onError: (error: Error) => {
       toast({ title: error.name, description: error.message });
