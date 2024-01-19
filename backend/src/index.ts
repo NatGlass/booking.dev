@@ -3,6 +3,7 @@ import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
 import path from "path";
+import cookieParser from "cookie-parser"
 
 // ROUTES
 import authRoutes from "./routes/auth";
@@ -11,6 +12,7 @@ import userRoute from "./routes/users";
 mongoose.connect(process.env.DATABASE_URL as string);
 
 const app = express();
+app.use(cookieParser())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
