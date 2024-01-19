@@ -2,8 +2,8 @@ import bcrypt from "bcryptjs";
 import express, { Request, Response } from "express";
 import { check, validationResult } from "express-validator";
 import jwt from "jsonwebtoken";
-import User from "../models/user";
 import { verifyToken } from "../middlewares/auth";
+import User from "../models/user";
 
 const router = express.Router();
 
@@ -49,7 +49,7 @@ router.post(
       res.cookie("auth_token", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        maxAge: 864_000_00,
+        maxAge: 86400000,
         sameSite: "lax",
       });
 
@@ -62,7 +62,7 @@ router.post(
 );
 
 router.get("/validate-token", verifyToken, (req: Request, res: Response) => {
-  res.status(200).send({userId: req.userId})
-})
+  res.status(200).send({ userId: req.userId });
+});
 
 export default router;
