@@ -8,6 +8,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/components/ui/use-toast";
 import { registerForm, registerFormType } from "@/schemas/registerForm";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -15,6 +16,7 @@ import { useMutation } from "react-query";
 import * as apiClient from "../api-client";
 
 function Register() {
+  const { toast } = useToast();
   const form = useForm<registerFormType>({
     resolver: zodResolver(registerForm),
     defaultValues: {
@@ -28,10 +30,10 @@ function Register() {
 
   const mutation = useMutation(apiClient.register, {
     onSuccess: () => {
-      console.log("Registered successfully");
+      toast({ title: "Success", description: "Registered successfully" });
     },
     onError: (error: Error) => {
-      console.log(error.message);
+      toast({ title: error.name, description: error.message });
     },
   });
 
