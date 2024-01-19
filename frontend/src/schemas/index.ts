@@ -16,3 +16,10 @@ export const registerForm = z
   });
 
 export type registerFormType = z.infer<typeof registerForm>;
+
+export const loginForm = z.object({
+  email: z.string().email("Invalid email"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+});
+
+export type loginFormType = z.infer<typeof loginForm>;
