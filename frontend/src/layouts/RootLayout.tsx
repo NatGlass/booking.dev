@@ -1,5 +1,6 @@
 import Footer from "@/components/global/Footer";
 import Header from "@/components/global/Header";
+import { Toaster } from "@/components/ui/toaster";
 import { PropsWithChildren } from "react";
 
 function RootLayout({ children }: PropsWithChildren) {
@@ -8,6 +9,7 @@ function RootLayout({ children }: PropsWithChildren) {
       <Header />
       {children}
       <Footer />
+      <Toaster />
     </div>
   );
 }
