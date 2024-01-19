@@ -11,6 +11,8 @@ import { Input } from "@/components/ui/input";
 import { registerForm, registerFormType } from "@/schemas/registerForm";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useMutation } from "react-query";
+import * as apiClient from "../api-client";
 
 function Register() {
   const form = useForm<registerFormType>({
@@ -24,8 +26,17 @@ function Register() {
     },
   });
 
+  const mutation = useMutation(apiClient.register, {
+    onSuccess: () => {
+      console.log("Registered successfully");
+    },
+    onError: (error: Error) => {
+      console.log(error.message);
+    },
+  });
+
   const onSubmit = (data: registerFormType) => {
-    console.log(data);
+    mutation.mutate(data);
   };
 
   return (
