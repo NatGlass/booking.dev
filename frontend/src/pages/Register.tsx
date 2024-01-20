@@ -126,7 +126,12 @@ function Register() {
             )}
           />
 
-          <Button type="submit" size="lg" className="max-w-sm self-center">
+          <Button
+            type="submit"
+            size="lg"
+            className="max-w-sm self-center"
+            data-testid="sign-up-form-button"
+          >
             Register
           </Button>
         </form>
