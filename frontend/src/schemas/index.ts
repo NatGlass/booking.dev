@@ -23,3 +23,19 @@ export const loginForm = z.object({
 });
 
 export type loginFormType = z.infer<typeof loginForm>;
+
+export const manageHotelForm = z.object({
+  name: z.string().min(1, "Name is required"),
+  city: z.string().min(1, "City is required"),
+  country: z.string().min(1, "Country is required"),
+  description: z.string().min(1, "Description is required"),
+  type: z.string().min(1, "Type is required"),
+  pricePerNight: z.number().min(1, "Price is required"),
+  rating: z.number().min(1, "Rating is required"),
+  facilities: z.array(z.string().min(1, "Facility is required")),
+  imageFiles: z.array(z.instanceof(File)),
+  adultCount: z.number().min(1, "Adult count is required"),
+  childCount: z.number().min(1, "Child count is required"),
+});
+
+export type manageHotelFormType = z.infer<typeof manageHotelForm>;
