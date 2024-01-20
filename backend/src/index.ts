@@ -22,10 +22,11 @@ app.use(
   })
 );
 
-app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoutes);
+
+app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
