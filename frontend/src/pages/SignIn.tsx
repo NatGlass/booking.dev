@@ -83,7 +83,12 @@ function SignIn() {
               </FormItem>
             )}
           />
-          <Button type="submit" size="lg" className="max-w-sm self-center">
+          <Button
+            type="submit"
+            size="lg"
+            className="max-w-sm self-center"
+            data-testid="sign-in-form-button"
+          >
             Sign In
           </Button>
         </form>
