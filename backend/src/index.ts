@@ -4,10 +4,21 @@ import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
 import path from "path";
+import { v2 as cloudinary } from "cloudinary";
+
+// CLOUDINARY
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+})
+
 
 // ROUTES
 import authRoutes from "./routes/auth";
 import userRoute from "./routes/users";
+
+
 
 mongoose.connect(process.env.DATABASE_URL as string);
 
@@ -21,7 +32,6 @@ app.use(
     credentials: true,
   })
 );
-
 
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoutes);
